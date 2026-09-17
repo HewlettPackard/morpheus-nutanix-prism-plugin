@@ -924,9 +924,17 @@ class NutanixPrismComputeUtility {
 		log.debug("cloudInitViaCD")
 		def cdromDisk = vmBody?.spec?.resources?.disk_list?.find { it.device_properties?.device_type == 'CDROM' }
 		def nextSataIndex = (vmBody?.spec?.resources?.disk_list.findAll { it.device_properties?.disk_address?.adapter_type == 'SATA' }?.collect { it.device_properties?.disk_address?.device_index ?: 0 }?.max() ?: 0) + 1
+		def isQ35 = vmBody?.spec?.resources?.machine_type == 'Q35'
 
 		if(cdromDisk) {
 			cdromDisk.data_source_reference = [kind: 'image', uuid: imageUuid]
+			// Q35 machine type does not support IDE bus, so re-attach on SATA if the existing CDROM (e.g. inherited from the source image) isn't already on it
+			if(isQ35 && cdromDisk.device_properties?.disk_address?.adapter_type != 'SATA') {
+				cdromDisk.device_properties.disk_address = [
+					"device_index": nextSataIndex,
+					"adapter_type": "SATA"
+				]
+			}
 		} else {
 			vmBody?.spec?.resources?.disk_list?.add([
 					device_properties: [
