@@ -2216,11 +2216,13 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			//cloud_init && sysprep
 			if (virtualImage?.isSysprep && (workloadRequest?.cloudConfigUser || hostRequest?.cloudConfigUser)) {
 				runConfig.isSysprep = true
+			} else if(virtualImage?.isCloudInit && (workloadRequest?.cloudConfigUser || hostRequest?.cloudConfigUser)) {
+				runConfig.isCloudInit = true
 			}
 			//check if data is too large for direct userData injection
 			def userDataLength = cloudConfigUser?.encodeAsBase64()?.size()
 			def insertIso = isCloudInitIso(runConfig) || (userDataLength > 32000)
-			if(cloudConfigUser) {
+			if((runConfig.isCloudInit || runConfig.isSysprep) && cloudConfigUser) {
 				if(!insertIso) {
 					runConfig.cloudInitUserData = cloudConfigUser.encodeAsBase64()
 				}
@@ -2668,10 +2670,13 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			//don't want to do cloudbase init for nutanix, instead rely on sysprep/unattend.xml in the API
 			if(createOpts.isSysprep != true)
 				rtn = true
-		} else if(createOpts.snapshotId) {
-			rtn = true
-		} else {
-			return createOpts.unmanagedNetwork
+		}
+		if (createOpts.isCloudInit || createOpts.isSysprep) {
+			if(createOpts.snapshotId) {
+				rtn = true
+			} else {
+				return createOpts.unmanagedNetwork
+			}
 		}
 		return rtn
 	}
