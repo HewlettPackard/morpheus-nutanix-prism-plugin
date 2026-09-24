@@ -1170,10 +1170,13 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			def authConfig = plugin.getAuthConfig(cloud)
 			Map serverDetails = NutanixPrismComputeUtility.checkServerReadyV4(client, authConfig, serverUuid)
 			if(serverDetails.success && serverDetails.virtualMachine) {
+				// prefer a static IP configured on the primary interface over the first IPv4 Nutanix reports
+				def configuredIp = server.interfaces?.find { it.primaryInterface }?.ipAddress
+				def resolvedIp = configuredIp ?: serverDetails.ipAddress
 				rtn.externalId = serverUuid
 				rtn.success = serverDetails.success
-				rtn.publicIp = serverDetails.ipAddress
-				rtn.privateIp = serverDetails.ipAddress
+				rtn.publicIp = resolvedIp
+				rtn.privateIp = resolvedIp
 				rtn.hostname = serverDetails.name
 				return ServiceResponse.success(rtn)
 
@@ -1992,6 +1995,18 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 		}
 		datastoreIds = datastoreIds.unique()
 		def datastores = morpheusContext.async.cloud.datastore.listById(datastoreIds).toMap {it.id.toLong()}.blockingGet()
+
+		// validate each disk's datastore belongs to the target cluster to avoid Prism INVALID_ARGUMENT partway through create
+		def targetClusterExternalId = config.clusterName
+		if(targetClusterExternalId) {
+			serverVolumes?.findAll { !it.rootVolume && it.datastore }?.each { volume ->
+				def ds = datastores[volume.datastore?.id?.toLong()]
+				def clusterMatch = ds?.assignedZonePools?.any { pool -> pool.externalId == targetClusterExternalId }
+				if(ds && !clusterMatch) {
+					throw new IllegalArgumentException("Datastore ${ds.name} (${ds.externalId}) is not attached to target cluster ${targetClusterExternalId}. Fix the disk's datastore selection.")
+				}
+			}
+		}
 
 		//categories
 		def categories = config.categories?.collect {
