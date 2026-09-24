@@ -452,16 +452,13 @@ class NutanixPrismCloudProvider implements CloudProvider {
 					//get creds
 					Map authConfig = [apiUrl: apiUrl, basePath: 'api/nutanix/v3', v2basePath: 'api/nutanix/v2.0', username: username, password: password]
 					HttpApiClient apiClient = new HttpApiClient()
-					def clusterList = NutanixPrismComputeUtility.listHostsV2(apiClient, authConfig)
-					if(clusterList.success == true) {
-						def vmmV4Test = NutanixPrismComputeUtility.testConnectionV4(apiClient, authConfig)
-						if(vmmV4Test.success == true) {
-							return ServiceResponse.success()
-						} else {
-							return new ServiceResponse(success: false, msg: 'Unable to reach the Nutanix VMM v4.3 API - this plugin requires AOS 7.6 / pc.7.6 or later')
-						}
-					} else {
+					def vmmV4Test = NutanixPrismComputeUtility.testConnectionV4(apiClient, authConfig)
+					if(vmmV4Test.success == true) {
+						return ServiceResponse.success()
+					} else if(vmmV4Test.data?.invalidLogin) {
 						return new ServiceResponse(success: false, msg: 'Invalid credentials')
+					} else {
+						return new ServiceResponse(success: false, msg: 'Unable to reach the Nutanix VMM v4.3 API - this plugin requires AOS 7.6 / pc.7.6 or later')
 					}
 				}
 			} else {
