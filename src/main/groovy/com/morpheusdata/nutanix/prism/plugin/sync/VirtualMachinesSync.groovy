@@ -70,7 +70,7 @@ class VirtualMachinesSync {
 				def domainRecords = morpheusContext.async.computeServer.listIdentityProjections(cloud.id, null).filter { ComputeServerIdentityProjection projection ->
 					projection.computeServerTypeCode != 'nutanix-prism-hypervisor'
 				}
-				def blackListedNames = domainRecords.filter {it.status == 'provisioning'}.map {it.name}.toList().blockingGet()
+				def blackListedNames = domainRecords.filter {it.status in ['provisioning','initializing','staging','finalizing']}.map {it.name}.toList().blockingGet()
 
 				// To be used throughout the sync
 				def defaultServerType = new ComputeServerType(code: 'nutanix-prism-unmanaged')
@@ -185,7 +185,8 @@ class VirtualMachinesSync {
 			try {
 				ComputeServer currentServer = update.existingItem
 				def cloudItem = update.masterItem
-				if (currentServer.status != 'provisioning') {
+				// broaden guard so this sync does not stomp sshHost while the server is still coming up
+				if (!(currentServer.status in ['provisioning','initializing','staging','finalizing'])) {
 					try {
 						def vmConfig = buildVmConfig(cloudItem, resourcePools, hosts)
 
