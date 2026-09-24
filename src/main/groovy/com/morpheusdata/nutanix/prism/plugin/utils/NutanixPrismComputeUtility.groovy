@@ -1648,6 +1648,15 @@ class NutanixPrismComputeUtility {
 	 * via {@link #getVmV4} just to find an existing CD-ROM's extId/next free index - the actual
 	 * mutation goes through {@link #insertCdRomV4}/{@link #createCdRomV4}, not a full-VM PUT, so no
 	 * ETag is needed for the mutation itself. Polls the returned task before returning.
+	 *
+	 * Ports the V3 fix for MORPH-15234 ("Force SATA bus for existing CD-ROM on Q35 VMs"): Q35
+	 * machines don't support IDE CD-ROM devices, so an existing CD-ROM inherited from the source
+	 * image (which may be on IDE) is repositioned to SATA before reuse. V4's {@code insert} action
+	 * only mutates {@code backingInfo} (the ISO reference), not {@code diskAddress}, and there is no
+	 * confirmed dedicated single-CD-ROM update endpoint in the vmm v4.3 spec, so the reposition uses
+	 * the same full-VM {@link #updateVmV4} PUT already relied on for disk/nic resize elsewhere in
+	 * this plugin. **Not yet verified against a live instance** - flag for confirmation that a
+	 * full-VM PUT can actually move an existing CD-ROM's bus/index in place.
 	 */
 	static ServiceResponse cloudInitViaCDV4(HttpApiClient client, Map authConfig, String vmUuid, String imageUuid) {
 		log.debug("cloudInitViaCDV4")
@@ -1657,8 +1666,18 @@ class NutanixPrismComputeUtility {
 		}
 		def cdRoms = vmDetail.data?.cdRoms ?: []
 		def existingCdRom = cdRoms ? cdRoms[0] : null
+		def isQ35 = vmDetail.data?.machineType == 'Q35'
 		ServiceResponse result
 		if (existingCdRom?.extId) {
+			if (isQ35 && existingCdRom.diskAddress?.busType != 'SATA') {
+				def nextSataIndex = (cdRoms.findAll { it.diskAddress?.busType == 'SATA' }.collect { it.diskAddress?.index ?: 0 }.max() ?: -1) + 1
+				existingCdRom.diskAddress = [busType: 'SATA', index: nextSataIndex]
+				def repositionResult = updateVmV4(client, authConfig, vmUuid, vmDetail.data, vmDetail.data.etag as String)
+				if (!repositionResult.success) {
+					return ServiceResponse.error("Error moving existing CD-ROM to SATA bus on vm ${vmUuid}", null, repositionResult.data)
+				}
+				checkTaskReadyV4(client, authConfig, repositionResult.data.task_uuid as String)
+			}
 			result = insertCdRomV4(client, authConfig, vmUuid, existingCdRom.extId as String, imageUuid)
 		} else {
 			def nextIndex = (cdRoms.collect { it.diskAddress?.index ?: 0 }.max() ?: -1) + 1
