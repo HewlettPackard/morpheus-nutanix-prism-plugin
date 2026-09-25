@@ -1,3 +1,11 @@
+// Nutanix Prism Terraform AccountResourceType mappings.
+// Looked up by TerraformResourceMappingService.findTerraformResourceType(apiType).
+// Managed resources with morpheusType=instance bind via NutanixPrismIacResourceMappingProvider.
+// Data-source-only types are registered for type resolution; sync ignores mode=data.
+// Source: https://registry.terraform.io/providers/nutanix/nutanix/latest/docs
+
+// --- Resources (v1 kept + v2) ---
+
 resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_virtual_machine" {
 	code = "terraform.nutanix-prism-cloud.nutanix_virtual_machine"
 	name = "Instance"
@@ -13,6 +21,2574 @@ resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_virtual_
 	resourceVersion = "1.0"
 	iacProviderType = "nutanix-prism-cloud"
 	iacType = "nutanix_virtual_machine"
-	description = ""
+	description = "Nutanix Virtual Machine (v1)"
 	isPlugin = true
 }
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_virtual_machine_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_virtual_machine_v2"
+	name = "Instance"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_virtual_machine_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "instance"
+	rootType = true
+	resourceType = "instance"
+	morpheusType = "instance"
+	displayOrder = 11
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_virtual_machine_v2"
+	description = "Nutanix Virtual Machine (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_subnet_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_subnet_v2"
+	name = "Subnet"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_subnet_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "subnet"
+	rootType = false
+	resourceType = "subnet"
+	morpheusType = "accountResource"
+	displayOrder = 20
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_subnet_v2"
+	description = "Nutanix Subnet (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vpc_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vpc_v2"
+	name = "VPC"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vpc_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vpc"
+	rootType = false
+	resourceType = "vpc"
+	morpheusType = "accountResource"
+	displayOrder = 21
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vpc_v2"
+	description = "Nutanix VPC (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_floating_ip_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_floating_ip_v2"
+	name = "Floating IP"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_floating_ip_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "floatingIp"
+	rootType = false
+	resourceType = "floatingIp"
+	morpheusType = "accountResource"
+	displayOrder = 22
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_floating_ip_v2"
+	description = "Nutanix Floating IP (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pbr_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pbr_v2"
+	name = "Policy Based Routing"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pbr_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pbr"
+	rootType = false
+	resourceType = "pbr"
+	morpheusType = "accountResource"
+	displayOrder = 23
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pbr_v2"
+	description = "Nutanix Policy Based Routing (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_routes_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_routes_v2"
+	name = "Routes"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_routes_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "routes"
+	rootType = false
+	resourceType = "routes"
+	morpheusType = "accountResource"
+	displayOrder = 24
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_routes_v2"
+	description = "Nutanix Routes (v2); replaces nutanix_static_routes"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_address_groups_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_address_groups_v2"
+	name = "Address Groups"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_address_groups_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "addressGroups"
+	rootType = false
+	resourceType = "addressGroups"
+	morpheusType = "accountResource"
+	displayOrder = 25
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_address_groups_v2"
+	description = "Nutanix Address Groups (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_service_groups_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_service_groups_v2"
+	name = "Service Groups"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_service_groups_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "serviceGroups"
+	rootType = false
+	resourceType = "serviceGroups"
+	morpheusType = "accountResource"
+	displayOrder = 26
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_service_groups_v2"
+	description = "Nutanix Service Groups (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_network_function_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_network_function_v2"
+	name = "Network Function"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_network_function_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "networkFunction"
+	rootType = false
+	resourceType = "networkFunction"
+	morpheusType = "accountResource"
+	displayOrder = 27
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_network_function_v2"
+	description = "Nutanix Network Function (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_network_security_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_network_security_policy_v2"
+	name = "Network Security Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_network_security_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "networkSecurityPolicy"
+	rootType = false
+	resourceType = "networkSecurityPolicy"
+	morpheusType = "accountResource"
+	displayOrder = 28
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_network_security_policy_v2"
+	description = "Nutanix Network Security Policy (v2); replaces nutanix_network_security_rule"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_roles_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_roles_v2"
+	name = "Roles"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_roles_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "roles"
+	rootType = false
+	resourceType = "roles"
+	morpheusType = "accountResource"
+	displayOrder = 30
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_roles_v2"
+	description = "Nutanix Roles (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_users_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_users_v2"
+	name = "Users"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_users_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "users"
+	rootType = false
+	resourceType = "users"
+	morpheusType = "accountResource"
+	displayOrder = 31
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_users_v2"
+	description = "Nutanix Users (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_user_groups_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_user_groups_v2"
+	name = "User Groups"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_user_groups_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "userGroups"
+	rootType = false
+	resourceType = "userGroups"
+	morpheusType = "accountResource"
+	displayOrder = 32
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_user_groups_v2"
+	description = "Nutanix User Groups (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_authorization_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_authorization_policy_v2"
+	name = "Authorization Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_authorization_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "authorizationPolicy"
+	rootType = false
+	resourceType = "authorizationPolicy"
+	morpheusType = "accountResource"
+	displayOrder = 33
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_authorization_policy_v2"
+	description = "Nutanix Authorization Policy (v2); replaces nutanix_access_control_policy"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_entity_group_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_entity_group_v2"
+	name = "Entity Group"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_entity_group_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "entityGroup"
+	rootType = false
+	resourceType = "entityGroup"
+	morpheusType = "accountResource"
+	displayOrder = 34
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_entity_group_v2"
+	description = "Nutanix Entity Group (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_saml_identity_providers_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_saml_identity_providers_v2"
+	name = "SAML Identity Providers"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_saml_identity_providers_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "samlIdentityProviders"
+	rootType = false
+	resourceType = "samlIdentityProviders"
+	morpheusType = "accountResource"
+	displayOrder = 35
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_saml_identity_providers_v2"
+	description = "Nutanix SAML Identity Providers (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_directory_services_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_directory_services_v2"
+	name = "Directory Services"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_directory_services_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "directoryServices"
+	rootType = false
+	resourceType = "directoryServices"
+	morpheusType = "accountResource"
+	displayOrder = 36
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_directory_services_v2"
+	description = "Nutanix Directory Services (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_user_key_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_user_key_v2"
+	name = "User Key"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_user_key_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "userKey"
+	rootType = false
+	resourceType = "userKey"
+	morpheusType = "accountResource"
+	displayOrder = 37
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_user_key_v2"
+	description = "Nutanix User Key (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_user_key_revoke_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_user_key_revoke_v2"
+	name = "User Key Revoke"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_user_key_revoke_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "userKeyRevoke"
+	rootType = false
+	resourceType = "userKeyRevoke"
+	morpheusType = "accountResource"
+	displayOrder = 38
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_user_key_revoke_v2"
+	description = "Nutanix User Key Revoke (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_category_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_category_v2"
+	name = "Category"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_category_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "category"
+	rootType = false
+	resourceType = "category"
+	morpheusType = "accountResource"
+	displayOrder = 40
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_category_v2"
+	description = "Nutanix Category (v2); replaces nutanix_category_key / nutanix_category_value"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_images_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_images_v2"
+	name = "Images"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_images_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "images"
+	rootType = false
+	resourceType = "images"
+	morpheusType = "accountResource"
+	displayOrder = 50
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_images_v2"
+	description = "Nutanix Images (v2); replaces nutanix_image"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_image_placement_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_image_placement_policy_v2"
+	name = "Image Placement Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_image_placement_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "imagePlacementPolicy"
+	rootType = false
+	resourceType = "imagePlacementPolicy"
+	morpheusType = "accountResource"
+	displayOrder = 51
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_image_placement_policy_v2"
+	description = "Nutanix Image Placement Policy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ova_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ova_v2"
+	name = "OVA"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ova_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ova"
+	rootType = false
+	resourceType = "ova"
+	morpheusType = "accountResource"
+	displayOrder = 52
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ova_v2"
+	description = "Nutanix OVA (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ova_vm_deploy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ova_vm_deploy_v2"
+	name = "OVA VM Deploy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ova_vm_deploy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ovaVmDeploy"
+	rootType = false
+	resourceType = "ovaVmDeploy"
+	morpheusType = "accountResource"
+	displayOrder = 53
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ova_vm_deploy_v2"
+	description = "Nutanix OVA VM Deploy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ova_download_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ova_download_v2"
+	name = "OVA Download"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ova_download_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ovaDownload"
+	rootType = false
+	resourceType = "ovaDownload"
+	morpheusType = "accountResource"
+	displayOrder = 54
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ova_download_v2"
+	description = "Nutanix OVA Download (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_template_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_template_v2"
+	name = "Template"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_template_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "template"
+	rootType = false
+	resourceType = "template"
+	morpheusType = "accountResource"
+	displayOrder = 55
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_template_v2"
+	description = "Nutanix Template (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_deploy_templates_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_deploy_templates_v2"
+	name = "Deploy Templates"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_deploy_templates_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "deployTemplates"
+	rootType = false
+	resourceType = "deployTemplates"
+	morpheusType = "accountResource"
+	displayOrder = 56
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_deploy_templates_v2"
+	description = "Nutanix Deploy Templates (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_template_guest_os_actions_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_template_guest_os_actions_v2"
+	name = "Template Guest OS Actions"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_template_guest_os_actions_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "templateGuestOsActions"
+	rootType = false
+	resourceType = "templateGuestOsActions"
+	morpheusType = "accountResource"
+	displayOrder = 57
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_template_guest_os_actions_v2"
+	description = "Nutanix Template Guest OS Actions (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_clone_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_clone_v2"
+	name = "VM Clone"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_clone_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmClone"
+	rootType = false
+	resourceType = "vmClone"
+	morpheusType = "accountResource"
+	displayOrder = 60
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_clone_v2"
+	description = "Nutanix VM Clone (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_cdrom_insert_eject_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_cdrom_insert_eject_v2"
+	name = "VM CD-ROM Insert/Eject"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_cdrom_insert_eject_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmCdromInsertEject"
+	rootType = false
+	resourceType = "vmCdromInsertEject"
+	morpheusType = "accountResource"
+	displayOrder = 61
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_cdrom_insert_eject_v2"
+	description = "Nutanix VM CD-ROM Insert/Eject (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_shutdown_action_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_shutdown_action_v2"
+	name = "VM Shutdown Action"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_shutdown_action_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmShutdownAction"
+	rootType = false
+	resourceType = "vmShutdownAction"
+	morpheusType = "accountResource"
+	displayOrder = 62
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_shutdown_action_v2"
+	description = "Nutanix VM Shutdown Action (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_gc_update_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_gc_update_v2"
+	name = "VM Guest Customization Update"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_gc_update_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmGcUpdate"
+	rootType = false
+	resourceType = "vmGcUpdate"
+	morpheusType = "accountResource"
+	displayOrder = 63
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_gc_update_v2"
+	description = "Nutanix VM Guest Customization Update (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_network_device_assign_ip_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_network_device_assign_ip_v2"
+	name = "VM Network Device Assign IP"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_network_device_assign_ip_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmNetworkDeviceAssignIp"
+	rootType = false
+	resourceType = "vmNetworkDeviceAssignIp"
+	morpheusType = "accountResource"
+	displayOrder = 64
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_network_device_assign_ip_v2"
+	description = "Nutanix VM Network Device Assign IP (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_network_device_migrate_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_network_device_migrate_v2"
+	name = "VM Network Device Migrate"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_network_device_migrate_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmNetworkDeviceMigrate"
+	rootType = false
+	resourceType = "vmNetworkDeviceMigrate"
+	morpheusType = "accountResource"
+	displayOrder = 65
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_network_device_migrate_v2"
+	description = "Nutanix VM Network Device Migrate (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_host_affinity_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_host_affinity_policy_v2"
+	name = "VM Host Affinity Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_host_affinity_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmHostAffinityPolicy"
+	rootType = false
+	resourceType = "vmHostAffinityPolicy"
+	morpheusType = "accountResource"
+	displayOrder = 66
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_host_affinity_policy_v2"
+	description = "Nutanix VM Host Affinity Policy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_anti_affinity_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_anti_affinity_policy_v2"
+	name = "VM Anti Affinity Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_anti_affinity_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmAntiAffinityPolicy"
+	rootType = false
+	resourceType = "vmAntiAffinityPolicy"
+	morpheusType = "accountResource"
+	displayOrder = 67
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_anti_affinity_policy_v2"
+	description = "Nutanix VM Anti Affinity Policy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ngt_installation_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ngt_installation_v2"
+	name = "NGT Installation"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ngt_installation_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ngtInstallation"
+	rootType = false
+	resourceType = "ngtInstallation"
+	morpheusType = "accountResource"
+	displayOrder = 68
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ngt_installation_v2"
+	description = "Nutanix Guest Tools Installation (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ngt_upgrade_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ngt_upgrade_v2"
+	name = "NGT Upgrade"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ngt_upgrade_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ngtUpgrade"
+	rootType = false
+	resourceType = "ngtUpgrade"
+	morpheusType = "accountResource"
+	displayOrder = 69
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ngt_upgrade_v2"
+	description = "Nutanix Guest Tools Upgrade (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ngt_insert_iso_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ngt_insert_iso_v2"
+	name = "NGT Insert ISO"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ngt_insert_iso_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ngtInsertIso"
+	rootType = false
+	resourceType = "ngtInsertIso"
+	morpheusType = "accountResource"
+	displayOrder = 70
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ngt_insert_iso_v2"
+	description = "Nutanix Guest Tools Insert ISO (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_revert_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_revert_v2"
+	name = "VM Revert"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_revert_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmRevert"
+	rootType = false
+	resourceType = "vmRevert"
+	morpheusType = "accountResource"
+	displayOrder = 71
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_revert_v2"
+	description = "Nutanix VM Revert (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_recovery_points_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_recovery_points_v2"
+	name = "Recovery Points"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_recovery_points_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "recoveryPoints"
+	rootType = false
+	resourceType = "recoveryPoints"
+	morpheusType = "accountResource"
+	displayOrder = 80
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_recovery_points_v2"
+	description = "Nutanix Recovery Points (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_recovery_point_replicate_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_recovery_point_replicate_v2"
+	name = "Recovery Point Replicate"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_recovery_point_replicate_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "recoveryPointReplicate"
+	rootType = false
+	resourceType = "recoveryPointReplicate"
+	morpheusType = "accountResource"
+	displayOrder = 81
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_recovery_point_replicate_v2"
+	description = "Nutanix Recovery Point Replicate (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_recovery_point_restore_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_recovery_point_restore_v2"
+	name = "Recovery Point Restore"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_recovery_point_restore_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "recoveryPointRestore"
+	rootType = false
+	resourceType = "recoveryPointRestore"
+	morpheusType = "accountResource"
+	displayOrder = 82
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_recovery_point_restore_v2"
+	description = "Nutanix Recovery Point Restore (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_protection_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_protection_policy_v2"
+	name = "Protection Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_protection_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "protectionPolicy"
+	rootType = false
+	resourceType = "protectionPolicy"
+	morpheusType = "accountResource"
+	displayOrder = 83
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_protection_policy_v2"
+	description = "Nutanix Protection Policy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_promote_protected_resource_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_promote_protected_resource_v2"
+	name = "Promote Protected Resource"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_promote_protected_resource_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "promoteProtectedResource"
+	rootType = false
+	resourceType = "promoteProtectedResource"
+	morpheusType = "accountResource"
+	displayOrder = 84
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_promote_protected_resource_v2"
+	description = "Nutanix Promote Protected Resource (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_restore_protected_resource_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_restore_protected_resource_v2"
+	name = "Restore Protected Resource"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_restore_protected_resource_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "restoreProtectedResource"
+	rootType = false
+	resourceType = "restoreProtectedResource"
+	morpheusType = "accountResource"
+	displayOrder = 85
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_restore_protected_resource_v2"
+	description = "Nutanix Restore Protected Resource (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_v2"
+	name = "Volume Group"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroup"
+	rootType = false
+	resourceType = "volumeGroup"
+	morpheusType = "accountResource"
+	displayOrder = 90
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_v2"
+	description = "Nutanix Volume Group (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_disk_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_disk_v2"
+	name = "Volume Group Disk"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_disk_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupDisk"
+	rootType = false
+	resourceType = "volumeGroupDisk"
+	morpheusType = "accountResource"
+	displayOrder = 91
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_disk_v2"
+	description = "Nutanix Volume Group Disk (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_iscsi_client_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_iscsi_client_v2"
+	name = "Volume Group iSCSI Client"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_iscsi_client_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupIscsiClient"
+	rootType = false
+	resourceType = "volumeGroupIscsiClient"
+	morpheusType = "accountResource"
+	displayOrder = 92
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_iscsi_client_v2"
+	description = "Nutanix Volume Group iSCSI Client (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_vm_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_vm_v2"
+	name = "Volume Group VM"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_vm_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupVm"
+	rootType = false
+	resourceType = "volumeGroupVm"
+	morpheusType = "accountResource"
+	displayOrder = 93
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_vm_v2"
+	description = "Nutanix Volume Group VM (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_storage_containers_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_storage_containers_v2"
+	name = "Storage Containers"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_storage_containers_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "storageContainers"
+	rootType = false
+	resourceType = "storageContainers"
+	morpheusType = "accountResource"
+	displayOrder = 94
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_storage_containers_v2"
+	description = "Nutanix Storage Containers (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_storage_policy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_storage_policy_v2"
+	name = "Storage Policy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_storage_policy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "storagePolicy"
+	rootType = false
+	resourceType = "storagePolicy"
+	morpheusType = "accountResource"
+	displayOrder = 95
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_storage_policy_v2"
+	description = "Nutanix Storage Policy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_cluster_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_cluster_v2"
+	name = "Cluster"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_cluster_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "cluster"
+	rootType = false
+	resourceType = "cluster"
+	morpheusType = "accountResource"
+	displayOrder = 100
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_cluster_v2"
+	description = "Nutanix Cluster (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_cluster_add_node_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_cluster_add_node_v2"
+	name = "Cluster Add Node"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_cluster_add_node_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "clusterAddNode"
+	rootType = false
+	resourceType = "clusterAddNode"
+	morpheusType = "accountResource"
+	displayOrder = 101
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_cluster_add_node_v2"
+	description = "Nutanix Cluster Add Node (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_registration_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_registration_v2"
+	name = "PC Registration"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_registration_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcRegistration"
+	rootType = false
+	resourceType = "pcRegistration"
+	morpheusType = "accountResource"
+	displayOrder = 102
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_registration_v2"
+	description = "Nutanix Prism Central Registration (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_clusters_discover_unconfigured_nodes_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_clusters_discover_unconfigured_nodes_v2"
+	name = "Discover Unconfigured Nodes"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_clusters_discover_unconfigured_nodes_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "clustersDiscoverUnconfiguredNodes"
+	rootType = false
+	resourceType = "clustersDiscoverUnconfiguredNodes"
+	morpheusType = "accountResource"
+	displayOrder = 103
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_clusters_discover_unconfigured_nodes_v2"
+	description = "Nutanix Discover Unconfigured Nodes (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_clusters_unconfigured_node_networks_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_clusters_unconfigured_node_networks_v2"
+	name = "Unconfigured Node Networks"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_clusters_unconfigured_node_networks_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "clustersUnconfiguredNodeNetworks"
+	rootType = false
+	resourceType = "clustersUnconfiguredNodeNetworks"
+	morpheusType = "accountResource"
+	displayOrder = 104
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_clusters_unconfigured_node_networks_v2"
+	description = "Nutanix Unconfigured Node Networks (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_deploy_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_deploy_v2"
+	name = "PC Deploy"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_deploy_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcDeploy"
+	rootType = false
+	resourceType = "pcDeploy"
+	morpheusType = "accountResource"
+	displayOrder = 105
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_deploy_v2"
+	description = "Nutanix Prism Central Deploy (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_backup_target_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_backup_target_v2"
+	name = "PC Backup Target"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_backup_target_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcBackupTarget"
+	rootType = false
+	resourceType = "pcBackupTarget"
+	morpheusType = "accountResource"
+	displayOrder = 106
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_backup_target_v2"
+	description = "Nutanix Prism Central Backup Target (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_restore_source_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_restore_source_v2"
+	name = "PC Restore Source"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_restore_source_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcRestoreSource"
+	rootType = false
+	resourceType = "pcRestoreSource"
+	morpheusType = "accountResource"
+	displayOrder = 107
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_restore_source_v2"
+	description = "Nutanix Prism Central Restore Source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_restore_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_restore_v2"
+	name = "PC Restore"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_restore_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcRestore"
+	rootType = false
+	resourceType = "pcRestore"
+	morpheusType = "accountResource"
+	displayOrder = 108
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_restore_v2"
+	description = "Nutanix Prism Central Restore (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_unregistration_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_unregistration_v2"
+	name = "PC Unregistration"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_unregistration_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcUnregistration"
+	rootType = false
+	resourceType = "pcUnregistration"
+	morpheusType = "accountResource"
+	displayOrder = 109
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_unregistration_v2"
+	description = "Nutanix Prism Central Unregistration (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_cluster_profile_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_cluster_profile_v2"
+	name = "Cluster Profile"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_cluster_profile_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "clusterProfile"
+	rootType = false
+	resourceType = "clusterProfile"
+	morpheusType = "accountResource"
+	displayOrder = 110
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_cluster_profile_v2"
+	description = "Nutanix Cluster Profile (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_perform_inventory_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_perform_inventory_v2"
+	name = "LCM Perform Inventory"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_perform_inventory_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmPerformInventory"
+	rootType = false
+	resourceType = "lcmPerformInventory"
+	morpheusType = "accountResource"
+	displayOrder = 120
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_perform_inventory_v2"
+	description = "Nutanix LCM Perform Inventory (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_prechecks_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_prechecks_v2"
+	name = "LCM Prechecks"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_prechecks_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmPrechecks"
+	rootType = false
+	resourceType = "lcmPrechecks"
+	morpheusType = "accountResource"
+	displayOrder = 121
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_prechecks_v2"
+	description = "Nutanix LCM Prechecks (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_upgrade_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_upgrade_v2"
+	name = "LCM Upgrade"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_upgrade_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmUpgrade"
+	rootType = false
+	resourceType = "lcmUpgrade"
+	morpheusType = "accountResource"
+	displayOrder = 122
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_upgrade_v2"
+	description = "Nutanix LCM Upgrade (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_config_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_config_v2"
+	name = "LCM Config"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_config_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmConfig"
+	rootType = false
+	resourceType = "lcmConfig"
+	morpheusType = "accountResource"
+	displayOrder = 123
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_config_v2"
+	description = "Nutanix LCM Config (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_object_store_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_object_store_v2"
+	name = "Object Store"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_object_store_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "objectStore"
+	rootType = false
+	resourceType = "objectStore"
+	morpheusType = "accountResource"
+	displayOrder = 124
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_object_store_v2"
+	description = "Nutanix Object Store (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_object_store_certificate_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_object_store_certificate_v2"
+	name = "Object Store Certificate"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_object_store_certificate_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "objectStoreCertificate"
+	rootType = false
+	resourceType = "objectStoreCertificate"
+	morpheusType = "accountResource"
+	displayOrder = 125
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_object_store_certificate_v2"
+	description = "Nutanix Object Store Certificate (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_password_change_request_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_password_change_request_v2"
+	name = "Password Change Request"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_password_change_request_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "passwordChangeRequest"
+	rootType = false
+	resourceType = "passwordChangeRequest"
+	morpheusType = "accountResource"
+	displayOrder = 126
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_password_change_request_v2"
+	description = "Nutanix Password Change Request (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_key_management_server_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_key_management_server_v2"
+	name = "Key Management Server"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_key_management_server_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "keyManagementServer"
+	rootType = false
+	resourceType = "keyManagementServer"
+	morpheusType = "accountResource"
+	displayOrder = 127
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_key_management_server_v2"
+	description = "Nutanix Key Management Server (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ssl_certificate_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ssl_certificate_v2"
+	name = "SSL Certificate"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ssl_certificate_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "sslCertificate"
+	rootType = false
+	resourceType = "sslCertificate"
+	morpheusType = "accountResource"
+	displayOrder = 128
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ssl_certificate_v2"
+	description = "Nutanix SSL Certificate (v2)"
+	isPlugin = true
+}
+
+// --- Data sources (v2 types without a matching managed resource apiType) ---
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_clusters_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_clusters_v2"
+	name = "Clusters"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_clusters_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "clusters"
+	rootType = false
+	resourceType = "clusters"
+	morpheusType = "accountResource"
+	displayOrder = 200
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_clusters_v2"
+	description = "Nutanix Clusters data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_host_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_host_v2"
+	name = "Host"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_host_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "host"
+	rootType = false
+	resourceType = "host"
+	morpheusType = "accountResource"
+	displayOrder = 201
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_host_v2"
+	description = "Nutanix Host data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_hosts_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_hosts_v2"
+	name = "Hosts"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_hosts_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "hosts"
+	rootType = false
+	resourceType = "hosts"
+	morpheusType = "accountResource"
+	displayOrder = 202
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_hosts_v2"
+	description = "Nutanix Hosts data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_subnets_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_subnets_v2"
+	name = "Subnets"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_subnets_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "subnets"
+	rootType = false
+	resourceType = "subnets"
+	morpheusType = "accountResource"
+	displayOrder = 203
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_subnets_v2"
+	description = "Nutanix Subnets data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vpcs_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vpcs_v2"
+	name = "VPCs"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vpcs_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vpcs"
+	rootType = false
+	resourceType = "vpcs"
+	morpheusType = "accountResource"
+	displayOrder = 204
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vpcs_v2"
+	description = "Nutanix VPCs data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pbrs_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pbrs_v2"
+	name = "Policy Based Routings"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pbrs_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pbrs"
+	rootType = false
+	resourceType = "pbrs"
+	morpheusType = "accountResource"
+	displayOrder = 205
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pbrs_v2"
+	description = "Nutanix PBRs data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_floating_ips_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_floating_ips_v2"
+	name = "Floating IPs"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_floating_ips_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "floatingIps"
+	rootType = false
+	resourceType = "floatingIps"
+	morpheusType = "accountResource"
+	displayOrder = 206
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_floating_ips_v2"
+	description = "Nutanix Floating IPs data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_address_group_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_address_group_v2"
+	name = "Address Group"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_address_group_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "addressGroup"
+	rootType = false
+	resourceType = "addressGroup"
+	morpheusType = "accountResource"
+	displayOrder = 207
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_address_group_v2"
+	description = "Nutanix Address Group data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_service_group_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_service_group_v2"
+	name = "Service Group"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_service_group_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "serviceGroup"
+	rootType = false
+	resourceType = "serviceGroup"
+	morpheusType = "accountResource"
+	displayOrder = 208
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_service_group_v2"
+	description = "Nutanix Service Group data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_network_functions_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_network_functions_v2"
+	name = "Network Functions"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_network_functions_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "networkFunctions"
+	rootType = false
+	resourceType = "networkFunctions"
+	morpheusType = "accountResource"
+	displayOrder = 209
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_network_functions_v2"
+	description = "Nutanix Network Functions data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_network_security_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_network_security_policies_v2"
+	name = "Network Security Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_network_security_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "networkSecurityPolicies"
+	rootType = false
+	resourceType = "networkSecurityPolicies"
+	morpheusType = "accountResource"
+	displayOrder = 210
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_network_security_policies_v2"
+	description = "Nutanix Network Security Policies data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_network_security_policy_rules_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_network_security_policy_rules_v2"
+	name = "Network Security Policy Rules"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_network_security_policy_rules_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "networkSecurityPolicyRules"
+	rootType = false
+	resourceType = "networkSecurityPolicyRules"
+	morpheusType = "accountResource"
+	displayOrder = 211
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_network_security_policy_rules_v2"
+	description = "Nutanix Network Security Policy Rules data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_role_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_role_v2"
+	name = "Role"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_role_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "role"
+	rootType = false
+	resourceType = "role"
+	morpheusType = "accountResource"
+	displayOrder = 212
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_role_v2"
+	description = "Nutanix Role data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_operation_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_operation_v2"
+	name = "Operation"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_operation_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "operation"
+	rootType = false
+	resourceType = "operation"
+	morpheusType = "accountResource"
+	displayOrder = 213
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_operation_v2"
+	description = "Nutanix Operation data source (v2); replaces nutanix_permission"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_operations_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_operations_v2"
+	name = "Operations"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_operations_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "operations"
+	rootType = false
+	resourceType = "operations"
+	morpheusType = "accountResource"
+	displayOrder = 214
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_operations_v2"
+	description = "Nutanix Operations data source (v2); replaces nutanix_permissions"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_user_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_user_v2"
+	name = "User"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_user_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "user"
+	rootType = false
+	resourceType = "user"
+	morpheusType = "accountResource"
+	displayOrder = 215
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_user_v2"
+	description = "Nutanix User data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_user_group_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_user_group_v2"
+	name = "User Group"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_user_group_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "userGroup"
+	rootType = false
+	resourceType = "userGroup"
+	morpheusType = "accountResource"
+	displayOrder = 216
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_user_group_v2"
+	description = "Nutanix User Group data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_authorization_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_authorization_policies_v2"
+	name = "Authorization Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_authorization_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "authorizationPolicies"
+	rootType = false
+	resourceType = "authorizationPolicies"
+	morpheusType = "accountResource"
+	displayOrder = 217
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_authorization_policies_v2"
+	description = "Nutanix Authorization Policies data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_iam_entity_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_iam_entity_v2"
+	name = "IAM Entity"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_iam_entity_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "iamEntity"
+	rootType = false
+	resourceType = "iamEntity"
+	morpheusType = "accountResource"
+	displayOrder = 218
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_iam_entity_v2"
+	description = "Nutanix IAM Entity data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_iam_entities_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_iam_entities_v2"
+	name = "IAM Entities"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_iam_entities_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "iamEntities"
+	rootType = false
+	resourceType = "iamEntities"
+	morpheusType = "accountResource"
+	displayOrder = 219
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_iam_entities_v2"
+	description = "Nutanix IAM Entities data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_entity_groups_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_entity_groups_v2"
+	name = "Entity Groups"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_entity_groups_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "entityGroups"
+	rootType = false
+	resourceType = "entityGroups"
+	morpheusType = "accountResource"
+	displayOrder = 220
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_entity_groups_v2"
+	description = "Nutanix Entity Groups data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_saml_identity_provider_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_saml_identity_provider_v2"
+	name = "SAML Identity Provider"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_saml_identity_provider_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "samlIdentityProvider"
+	rootType = false
+	resourceType = "samlIdentityProvider"
+	morpheusType = "accountResource"
+	displayOrder = 221
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_saml_identity_provider_v2"
+	description = "Nutanix SAML Identity Provider data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_directory_service_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_directory_service_v2"
+	name = "Directory Service"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_directory_service_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "directoryService"
+	rootType = false
+	resourceType = "directoryService"
+	morpheusType = "accountResource"
+	displayOrder = 222
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_directory_service_v2"
+	description = "Nutanix Directory Service data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_categories_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_categories_v2"
+	name = "Categories"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_categories_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "categories"
+	rootType = false
+	resourceType = "categories"
+	morpheusType = "accountResource"
+	displayOrder = 223
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_categories_v2"
+	description = "Nutanix Categories data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_image_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_image_v2"
+	name = "Image"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_image_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "image"
+	rootType = false
+	resourceType = "image"
+	morpheusType = "accountResource"
+	displayOrder = 224
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_image_v2"
+	description = "Nutanix Image data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_virtual_machines_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_virtual_machines_v2"
+	name = "Virtual Machines"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_virtual_machines_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "virtualMachines"
+	rootType = false
+	resourceType = "virtualMachines"
+	morpheusType = "accountResource"
+	displayOrder = 225
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_virtual_machines_v2"
+	description = "Nutanix Virtual Machines data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_host_affinity_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_host_affinity_policies_v2"
+	name = "VM Host Affinity Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_host_affinity_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmHostAffinityPolicies"
+	rootType = false
+	resourceType = "vmHostAffinityPolicies"
+	morpheusType = "accountResource"
+	displayOrder = 226
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_host_affinity_policies_v2"
+	description = "Nutanix VM Host Affinity Policies data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_anti_affinity_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_anti_affinity_policies_v2"
+	name = "VM Anti Affinity Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_anti_affinity_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmAntiAffinityPolicies"
+	rootType = false
+	resourceType = "vmAntiAffinityPolicies"
+	morpheusType = "accountResource"
+	displayOrder = 227
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_anti_affinity_policies_v2"
+	description = "Nutanix VM Anti Affinity Policies data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ovas_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ovas_v2"
+	name = "OVAs"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ovas_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ovas"
+	rootType = false
+	resourceType = "ovas"
+	morpheusType = "accountResource"
+	displayOrder = 228
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ovas_v2"
+	description = "Nutanix OVAs data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_templates_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_templates_v2"
+	name = "Templates"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_templates_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "templates"
+	rootType = false
+	resourceType = "templates"
+	morpheusType = "accountResource"
+	displayOrder = 229
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_templates_v2"
+	description = "Nutanix Templates data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_ngt_configuration_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_ngt_configuration_v2"
+	name = "NGT Configuration"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_ngt_configuration_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "ngtConfiguration"
+	rootType = false
+	resourceType = "ngtConfiguration"
+	morpheusType = "accountResource"
+	displayOrder = 230
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_ngt_configuration_v2"
+	description = "Nutanix NGT Configuration data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_image_placement_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_image_placement_policies_v2"
+	name = "Image Placement Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_image_placement_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "imagePlacementPolicies"
+	rootType = false
+	resourceType = "imagePlacementPolicies"
+	morpheusType = "accountResource"
+	displayOrder = 231
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_image_placement_policies_v2"
+	description = "Nutanix Image Placement Policies data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_groups_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_groups_v2"
+	name = "Volume Groups"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_groups_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroups"
+	rootType = false
+	resourceType = "volumeGroups"
+	morpheusType = "accountResource"
+	displayOrder = 232
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_groups_v2"
+	description = "Nutanix Volume Groups data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_disks_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_disks_v2"
+	name = "Volume Group Disks"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_disks_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupDisks"
+	rootType = false
+	resourceType = "volumeGroupDisks"
+	morpheusType = "accountResource"
+	displayOrder = 233
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_disks_v2"
+	description = "Nutanix Volume Group Disks data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_iscsi_clients_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_iscsi_clients_v2"
+	name = "Volume Group iSCSI Clients"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_iscsi_clients_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupIscsiClients"
+	rootType = false
+	resourceType = "volumeGroupIscsiClients"
+	morpheusType = "accountResource"
+	displayOrder = 234
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_iscsi_clients_v2"
+	description = "Nutanix Volume Group iSCSI Clients data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_category_details_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_category_details_v2"
+	name = "Volume Group Category Details"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_category_details_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupCategoryDetails"
+	rootType = false
+	resourceType = "volumeGroupCategoryDetails"
+	morpheusType = "accountResource"
+	displayOrder = 235
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_category_details_v2"
+	description = "Nutanix Volume Group Category Details data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_group_vms_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_group_vms_v2"
+	name = "Volume Group VMs"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_group_vms_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeGroupVms"
+	rootType = false
+	resourceType = "volumeGroupVms"
+	morpheusType = "accountResource"
+	displayOrder = 236
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_group_vms_v2"
+	description = "Nutanix Volume Group VMs data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_iscsi_client_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_iscsi_client_v2"
+	name = "Volume iSCSI Client"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_iscsi_client_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeIscsiClient"
+	rootType = false
+	resourceType = "volumeIscsiClient"
+	morpheusType = "accountResource"
+	displayOrder = 237
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_iscsi_client_v2"
+	description = "Nutanix Volume iSCSI Client data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_volume_iscsi_clients_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_volume_iscsi_clients_v2"
+	name = "Volume iSCSI Clients"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_volume_iscsi_clients_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "volumeIscsiClients"
+	rootType = false
+	resourceType = "volumeIscsiClients"
+	morpheusType = "accountResource"
+	displayOrder = 238
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_volume_iscsi_clients_v2"
+	description = "Nutanix Volume iSCSI Clients data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_recovery_point_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_recovery_point_v2"
+	name = "Recovery Point"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_recovery_point_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "recoveryPoint"
+	rootType = false
+	resourceType = "recoveryPoint"
+	morpheusType = "accountResource"
+	displayOrder = 239
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_recovery_point_v2"
+	description = "Nutanix Recovery Point data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_vm_recovery_point_info_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_vm_recovery_point_info_v2"
+	name = "VM Recovery Point Info"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_vm_recovery_point_info_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "vmRecoveryPointInfo"
+	rootType = false
+	resourceType = "vmRecoveryPointInfo"
+	morpheusType = "accountResource"
+	displayOrder = 240
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_vm_recovery_point_info_v2"
+	description = "Nutanix VM Recovery Point Info data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_storage_container_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_storage_container_v2"
+	name = "Storage Container"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_storage_container_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "storageContainer"
+	rootType = false
+	resourceType = "storageContainer"
+	morpheusType = "accountResource"
+	displayOrder = 241
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_storage_container_v2"
+	description = "Nutanix Storage Container data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_storage_container_stats_info_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_storage_container_stats_info_v2"
+	name = "Storage Container Stats"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_storage_container_stats_info_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "storageContainerStatsInfo"
+	rootType = false
+	resourceType = "storageContainerStatsInfo"
+	morpheusType = "accountResource"
+	displayOrder = 242
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_storage_container_stats_info_v2"
+	description = "Nutanix Storage Container Stats data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_v2"
+	name = "Prism Central"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pc"
+	rootType = false
+	resourceType = "pc"
+	morpheusType = "accountResource"
+	displayOrder = 243
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_v2"
+	description = "Nutanix Prism Central data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pcs_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pcs_v2"
+	name = "Prism Centrals"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pcs_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcs"
+	rootType = false
+	resourceType = "pcs"
+	morpheusType = "accountResource"
+	displayOrder = 244
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pcs_v2"
+	description = "Nutanix Prism Centrals data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_restorable_pcs_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_restorable_pcs_v2"
+	name = "Restorable Prism Centrals"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_restorable_pcs_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "restorablePcs"
+	rootType = false
+	resourceType = "restorablePcs"
+	morpheusType = "accountResource"
+	displayOrder = 245
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_restorable_pcs_v2"
+	description = "Nutanix Restorable Prism Centrals data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_restore_points_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_restore_points_v2"
+	name = "PC Restore Points"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_restore_points_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcRestorePoints"
+	rootType = false
+	resourceType = "pcRestorePoints"
+	morpheusType = "accountResource"
+	displayOrder = 246
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_restore_points_v2"
+	description = "Nutanix PC Restore Points data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_restore_point_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_restore_point_v2"
+	name = "PC Restore Point"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_restore_point_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcRestorePoint"
+	rootType = false
+	resourceType = "pcRestorePoint"
+	morpheusType = "accountResource"
+	displayOrder = 247
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_restore_point_v2"
+	description = "Nutanix PC Restore Point data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_pc_backup_targets_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_pc_backup_targets_v2"
+	name = "PC Backup Targets"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_pc_backup_targets_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "pcBackupTargets"
+	rootType = false
+	resourceType = "pcBackupTargets"
+	morpheusType = "accountResource"
+	displayOrder = 248
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_pc_backup_targets_v2"
+	description = "Nutanix PC Backup Targets data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_protected_resource_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_protected_resource_v2"
+	name = "Protected Resource"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_protected_resource_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "protectedResource"
+	rootType = false
+	resourceType = "protectedResource"
+	morpheusType = "accountResource"
+	displayOrder = 249
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_protected_resource_v2"
+	description = "Nutanix Protected Resource data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_protection_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_protection_policies_v2"
+	name = "Protection Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_protection_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "protectionPolicies"
+	rootType = false
+	resourceType = "protectionPolicies"
+	morpheusType = "accountResource"
+	displayOrder = 250
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_protection_policies_v2"
+	description = "Nutanix Protection Policies data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_status_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_status_v2"
+	name = "LCM Status"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_status_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmStatus"
+	rootType = false
+	resourceType = "lcmStatus"
+	morpheusType = "accountResource"
+	displayOrder = 251
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_status_v2"
+	description = "Nutanix LCM Status data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_entities_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_entities_v2"
+	name = "LCM Entities"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_entities_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmEntities"
+	rootType = false
+	resourceType = "lcmEntities"
+	morpheusType = "accountResource"
+	displayOrder = 252
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_entities_v2"
+	description = "Nutanix LCM Entities data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_lcm_entity_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_lcm_entity_v2"
+	name = "LCM Entity"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_lcm_entity_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "lcmEntity"
+	rootType = false
+	resourceType = "lcmEntity"
+	morpheusType = "accountResource"
+	displayOrder = 253
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_lcm_entity_v2"
+	description = "Nutanix LCM Entity data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_user_keys_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_user_keys_v2"
+	name = "User Keys"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_user_keys_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "userKeys"
+	rootType = false
+	resourceType = "userKeys"
+	morpheusType = "accountResource"
+	displayOrder = 254
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_user_keys_v2"
+	description = "Nutanix User Keys data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_object_stores_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_object_stores_v2"
+	name = "Object Stores"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_object_stores_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "objectStores"
+	rootType = false
+	resourceType = "objectStores"
+	morpheusType = "accountResource"
+	displayOrder = 255
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_object_stores_v2"
+	description = "Nutanix Object Stores data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_certificate_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_certificate_v2"
+	name = "Certificate"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_certificate_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "certificate"
+	rootType = false
+	resourceType = "certificate"
+	morpheusType = "accountResource"
+	displayOrder = 256
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_certificate_v2"
+	description = "Nutanix Certificate data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_certificates_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_certificates_v2"
+	name = "Certificates"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_certificates_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "certificates"
+	rootType = false
+	resourceType = "certificates"
+	morpheusType = "accountResource"
+	displayOrder = 257
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_certificates_v2"
+	description = "Nutanix Certificates data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_system_user_passwords_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_system_user_passwords_v2"
+	name = "System User Passwords"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_system_user_passwords_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "systemUserPasswords"
+	rootType = false
+	resourceType = "systemUserPasswords"
+	morpheusType = "accountResource"
+	displayOrder = 258
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_system_user_passwords_v2"
+	description = "Nutanix System User Passwords data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_key_management_servers_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_key_management_servers_v2"
+	name = "Key Management Servers"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_key_management_servers_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "keyManagementServers"
+	rootType = false
+	resourceType = "keyManagementServers"
+	morpheusType = "accountResource"
+	displayOrder = 259
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_key_management_servers_v2"
+	description = "Nutanix Key Management Servers data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_stigs_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_stigs_v2"
+	name = "STIGs"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_stigs_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "stigs"
+	rootType = false
+	resourceType = "stigs"
+	morpheusType = "accountResource"
+	displayOrder = 260
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_stigs_v2"
+	description = "Nutanix STIGs data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_cluster_profiles_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_cluster_profiles_v2"
+	name = "Cluster Profiles"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_cluster_profiles_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "clusterProfiles"
+	rootType = false
+	resourceType = "clusterProfiles"
+	morpheusType = "accountResource"
+	displayOrder = 261
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_cluster_profiles_v2"
+	description = "Nutanix Cluster Profiles data source (v2)"
+	isPlugin = true
+}
+
+resource "account-resource-type" "terraform.nutanix-prism-cloud.nutanix_storage_policies_v2" {
+	code = "terraform.nutanix-prism-cloud.nutanix_storage_policies_v2"
+	name = "Storage Policies"
+	apiCategory = "nutanix"
+	category = "terraform"
+	apiType = "nutanix_storage_policies_v2"
+	resourceIcon = "/plugin/nutanix-prism-central/nutanix-prism.svg"
+	type = "storagePolicies"
+	rootType = false
+	resourceType = "storagePolicies"
+	morpheusType = "accountResource"
+	displayOrder = 262
+	resourceVersion = "1.0"
+	iacProviderType = "nutanix-prism-cloud"
+	iacType = "nutanix_storage_policies_v2"
+	description = "Nutanix Storage Policies data source (v2)"
+	isPlugin = true
+}
+
