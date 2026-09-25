@@ -165,7 +165,8 @@ class NutanixPrismComputeUtility {
 				nic_list: runConfig.nicList,
 		]
 
-		if(runConfig.diskList.size() > 1 || runConfig.uefi) {
+		//only pin boot_device for UEFI — pinning on multi-disk suppresses the AHV NoCloud seed CDROM and breaks cloud-init user_data delivery
+		if(runConfig.uefi) {
 			resources['boot_config'] = [boot_device: [disk_address:[adapter_type:runConfig.storageType.toUpperCase(), device_index:0]]]
 		}
 

@@ -2224,7 +2224,9 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			}
 			//check if data is too large for direct userData injection
 			def userDataLength = cloudConfigUser?.encodeAsBase64()?.size()
-			def insertIso = isCloudInitIso(runConfig) || (userDataLength > 32000)
+			//multi-disk provisions must use the ISO seed path — the guest_customization boot_device pin suppresses the AHV NoCloud seed CDROM and cloud-init never sees a datasource
+			def multiDisk = (runConfig.diskList?.size() ?: 0) > 1
+			def insertIso = isCloudInitIso(runConfig) || (userDataLength > 32000) || multiDisk
 			if(cloudConfigUser) {
 				if(!insertIso) {
 					runConfig.cloudInitUserData = cloudConfigUser.encodeAsBase64()
