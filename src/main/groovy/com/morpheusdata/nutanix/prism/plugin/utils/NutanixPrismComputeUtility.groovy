@@ -1113,6 +1113,13 @@ class NutanixPrismComputeUtility {
 		}
 	}
 
+	/**
+	 * Intentionally left on V3 HTTP - Nutanix has not published a Projects resource anywhere in the
+	 * V4 API line (checked every plausibly-relevant namespace: {@code iam}, {@code prism},
+	 * {@code clustermgmt}, {@code multidomain}). Re-verified live against a pc.7.6+ instance
+	 * (2026-09-24), not just spec-reading, so this is a confirmed upstream gap, not an oversight -
+	 * revisit if/when Nutanix ships a V4 Projects endpoint.
+	 */
 	static ServiceResponse getProject(HttpApiClient client, Map authConfig, String uuid) {
 		log.debug("getVm")
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/projects/${uuid}", authConfig.username, authConfig.password,
@@ -1361,6 +1368,9 @@ class NutanixPrismComputeUtility {
 		return listResult
 	}
 
+	/**
+	 * Intentionally left on V3 HTTP - same gap as {@link #getProject}, see its doc comment.
+	 */
 	static ServiceResponse listProjects(HttpApiClient client, Map authConfig) {
 		log.debug("listProjects")
 		return callListApi(client, 'project', 'projects/list', authConfig)
