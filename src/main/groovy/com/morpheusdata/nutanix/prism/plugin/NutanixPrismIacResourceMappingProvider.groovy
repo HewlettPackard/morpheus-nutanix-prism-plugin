@@ -38,9 +38,7 @@ import com.morpheusdata.nutanix.prism.plugin.utils.NutanixPrismSyncUtils
 import com.morpheusdata.response.ServiceResponse
 import com.morpheusdata.response.WorkloadResourceMappingResponse
 import com.morpheusdata.response.InstanceResourceMappingResponse
-import groovy.util.logging.Slf4j
 
-@Slf4j
 class NutanixPrismIacResourceMappingProvider implements IacResourceMappingProvider {
 
 	NutanixPrismPlugin plugin
