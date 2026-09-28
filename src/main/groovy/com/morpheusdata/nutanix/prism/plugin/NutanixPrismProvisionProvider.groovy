@@ -1165,13 +1165,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			def authConfig = plugin.getAuthConfig(cloud)
 			Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid)
 			if(serverDetails.success && serverDetails.virtualMachine) {
-				// prefer a static IP configured on the primary interface over the first IPv4 Nutanix reports
-				def configuredIp = server.interfaces?.find { it.primaryInterface }?.ipAddress
-				def resolvedIp = configuredIp ?: serverDetails.ipAddress
 				rtn.externalId = serverUuid
 				rtn.success = serverDetails.success
-				rtn.publicIp = resolvedIp
-				rtn.privateIp = resolvedIp
+				rtn.publicIp = serverDetails.ipAddress
+				rtn.privateIp = serverDetails.ipAddress
 				rtn.hostname = serverDetails.name
 				return ServiceResponse.success(rtn)
 
@@ -2001,18 +1998,6 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 		datastoreIds = datastoreIds.unique()
 		def datastores = morpheusContext.async.cloud.datastore.listById(datastoreIds).toMap {it.id.toLong()}.blockingGet()
 
-		// validate each disk's datastore belongs to the target cluster to avoid Prism INVALID_ARGUMENT partway through create
-		def targetClusterExternalId = config.clusterName
-		if(targetClusterExternalId) {
-			serverVolumes?.findAll { !it.rootVolume && it.datastore }?.each { volume ->
-				def ds = datastores[volume.datastore?.id?.toLong()]
-				def clusterMatch = ds?.assignedZonePools?.any { pool -> pool.externalId == targetClusterExternalId }
-				if(ds && !clusterMatch) {
-					throw new IllegalArgumentException("Datastore ${ds.name} (${ds.externalId}) is not attached to target cluster ${targetClusterExternalId}. Fix the disk's datastore selection.")
-				}
-			}
-		}
-
 		//categories
 		def categories = config.categories?.collect {
 			def catString
@@ -2224,9 +2209,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			}
 			//check if data is too large for direct userData injection
 			def userDataLength = cloudConfigUser?.encodeAsBase64()?.size()
-			//multi-disk provisions must use the ISO seed path — the guest_customization boot_device pin suppresses the AHV NoCloud seed CDROM and cloud-init never sees a datasource
-			def multiDisk = (runConfig.diskList?.size() ?: 0) > 1
-			def insertIso = isCloudInitIso(runConfig) || (userDataLength > 32000) || multiDisk
+			def insertIso = isCloudInitIso(runConfig) || (userDataLength > 32000)
 			if(cloudConfigUser) {
 				if(!insertIso) {
 					runConfig.cloudInitUserData = cloudConfigUser.encodeAsBase64()
