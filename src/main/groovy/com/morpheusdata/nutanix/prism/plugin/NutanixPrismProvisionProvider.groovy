@@ -993,6 +993,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			client.networkProxy = cloud.apiProxy
 			def authConfig = plugin.getAuthConfig(cloud)
 			def vmResource = NutanixPrismComputeUtility.waitForPowerState(client, authConfig, server.externalId)
+			if(isPoweredOn(vmResource)) {
+				log.info("startWorkload - VM ${server.externalId} is already powered on, skipping power on request")
+				return ServiceResponse.success()
+			}
 			def startResults = NutanixPrismComputeUtility.startVm(client, authConfig, server.externalId, vmResource.data)
 			log.debug("startResults: ${startResults}")
 			if(startResults.success == true) {
@@ -1015,6 +1019,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 		}
 	}
 
+	private static boolean isPoweredOn(Map vmResource) {
+		return vmResource?.success == true && vmResource.powerState?.toString()?.equalsIgnoreCase('ON')
+	}
+
 	@Override
 	ServiceResponse startServer(ComputeServer computeServer) {
 		log.debug("startServer: ${computeServer}")
@@ -1026,6 +1034,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 				client.networkProxy = cloud.apiProxy
 				def authConfig = plugin.getAuthConfig(cloud)
 				def vmResource = NutanixPrismComputeUtility.waitForPowerState(client, authConfig, computeServer.externalId)
+				if(isPoweredOn(vmResource)) {
+					log.info("startServer - VM ${computeServer.externalId} is already powered on, skipping power on request")
+					return ServiceResponse.success()
+				}
 				def startResults = NutanixPrismComputeUtility.startVm(client, authConfig, computeServer.externalId, vmResource.data)
 				if(startResults.success == true) {
 					def taskId = startResults?.data?.status?.execution_context?.task_uuid
