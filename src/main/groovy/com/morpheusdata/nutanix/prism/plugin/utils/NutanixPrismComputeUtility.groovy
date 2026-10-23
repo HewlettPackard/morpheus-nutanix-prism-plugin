@@ -92,7 +92,7 @@ class NutanixPrismComputeUtility {
 	static ServiceResponse getImage(HttpApiClient client, Map authConfig, String imageId) {
 		log.debug("checkImageId")
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/images/${imageId}", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'GET')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'GET')
 		if(results?.success) {
 			return ServiceResponse.success(results.data)
 		} else {
@@ -114,27 +114,27 @@ class NutanixPrismComputeUtility {
 	static ServiceResponse createImage(HttpApiClient client, Map authConfig, String imageName, String imageType, String sourceUri = null, String diskUuid = null) {
 		log.debug("createImage")
 		def body = [
-				spec: [
-				        name: imageName,
-						resources: [
-						        image_type: imageType
-						]
-				],
-				metadata: [
-				        kind: 'image'
+			spec: [
+				name: imageName,
+				resources: [
+					image_type: imageType
 				]
+			],
+			metadata: [
+				kind: 'image'
+			]
 		]
 		if(sourceUri) {
 			body.spec.resources.source_uri = sourceUri
 		}
 		if(diskUuid) {
 			body.spec.resources.data_source_reference = [
-			    "kind": "vm_disk",
+				"kind": "vm_disk",
 				"uuid": diskUuid
 			]
 		}
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/images", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
 		if(results?.success) {
 			return ServiceResponse.success(results.data)
 		} else {
@@ -146,7 +146,7 @@ class NutanixPrismComputeUtility {
 		log.debug("uploadImage: ${imageExternalId}")
 		def imageStream = new BufferedInputStream(stream, 1200)
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/images/${imageExternalId}/file", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type': ContentType.APPLICATION_OCTET_STREAM.toString(), 'Connection': 'Keep-Alive'], contentType: ContentType.APPLICATION_OCTET_STREAM, body: imageStream, contentLength: contentLength, ignoreSSL: true), 'PUT')
+			new HttpApiClient.RequestOptions(headers:['Content-Type': ContentType.APPLICATION_OCTET_STREAM.toString(), 'Connection': 'Keep-Alive'], contentType: ContentType.APPLICATION_OCTET_STREAM, body: imageStream, contentLength: contentLength, ignoreSSL: true), 'PUT')
 		if(results?.success) {
 			return ServiceResponse.success()
 		} else {
@@ -158,11 +158,11 @@ class NutanixPrismComputeUtility {
 		log.debug("createVM")
 
 		def resources = [
-				num_sockets: runConfig.numSockets,
-				memory_size_mib: runConfig.maxMemory,
-				num_vcpus_per_socket: runConfig.coresPerSocket,
-				disk_list: runConfig.diskList,
-				nic_list: runConfig.nicList,
+			num_sockets: runConfig.numSockets,
+			memory_size_mib: runConfig.maxMemory,
+			num_vcpus_per_socket: runConfig.coresPerSocket,
+			disk_list: runConfig.diskList,
+			nic_list: runConfig.nicList,
 		]
 
 		if(runConfig.diskList.size() > 1 || runConfig.uefi) {
@@ -207,14 +207,14 @@ class NutanixPrismComputeUtility {
 		}
 
 		def body = [
-				spec: [
-						name: runConfig.name,
-						resources: resources,
-						cluster_reference: runConfig.clusterReference
-				],
-				metadata: [
-						kind: 'vm'
-				]
+			spec: [
+				name: runConfig.name,
+				resources: resources,
+				cluster_reference: runConfig.clusterReference
+			],
+			metadata: [
+				kind: 'vm'
+			]
 		]
 
 		if(runConfig.projectReference) {
@@ -222,7 +222,7 @@ class NutanixPrismComputeUtility {
 		}
 
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/vms", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
 		if(results?.success) {
 			return ServiceResponse.success(results.data)
 		} else {
@@ -277,8 +277,8 @@ class NutanixPrismComputeUtility {
 				]
 			],
 			vm_customization_config: [
-			   userdata: runConfig.cloudInitUserData,
-			   fresh_install: false
+				userdata: runConfig.cloudInitUserData,
+				fresh_install: false
 			]
 
 		]
@@ -297,7 +297,7 @@ class NutanixPrismComputeUtility {
 	static ServiceResponse getTask(HttpApiClient client, Map authConfig, String uuid) {
 		log.debug("getTask")
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/tasks/${uuid}", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'GET')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'GET')
 		if(results?.success) {
 			return ServiceResponse.success(results.data)
 		} else {
@@ -308,7 +308,7 @@ class NutanixPrismComputeUtility {
 	static ServiceResponse getVm(HttpApiClient client, Map authConfig, String uuid) {
 		log.debug("getVm")
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/vms/${uuid}", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'GET')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'GET')
 		if(results?.success) {
 			return ServiceResponse.success(results.data)
 		} else {
@@ -361,7 +361,7 @@ class NutanixPrismComputeUtility {
 		vmBody?.metadata?.remove('spec_hash')
 		log.debug("updateVm")
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/vms/${uuid}", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, body: vmBody, ignoreSSL: true), 'PUT')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, body: vmBody, ignoreSSL: true), 'PUT')
 		if(results?.success) {
 			return ServiceResponse.success(results.data)
 		} else {
@@ -568,7 +568,7 @@ class NutanixPrismComputeUtility {
 		log.debug("listSnapshots")
 
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.v2basePath}/snapshots", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], ignoreSSL: true), 'GET')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], ignoreSSL: true), 'GET')
 
 		if(results?.success) {
 			return ServiceResponse.success(results?.data?.entities)
@@ -582,7 +582,7 @@ class NutanixPrismComputeUtility {
 		log.debug("getSnapshot")
 
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.v2basePath}/snapshots/${snapshotUuid}", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], ignoreSSL: true), 'GET')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], ignoreSSL: true), 'GET')
 
 		if(results?.success) {
 			return ServiceResponse.success(results?.data)
@@ -598,7 +598,7 @@ class NutanixPrismComputeUtility {
 		def body = [snapshot_specs:[[vm_uuid:vmUuid, snapshot_name:snapshotName]]]
 
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.v2basePath}/snapshots", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], body: body, ignoreSSL: true), 'POST')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], body: body, ignoreSSL: true), 'POST')
 
 		if(results?.success) {
 			return ServiceResponse.success(results?.data)
@@ -611,7 +611,7 @@ class NutanixPrismComputeUtility {
 		log.debug("deleteSnapshot")
 
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.v2basePath}/snapshots/${snapshotUuid}", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], ignoreSSL: true), 'DELETE')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], ignoreSSL: true), 'DELETE')
 		if(results?.success) {
 			return ServiceResponse.success(results?.data)
 		} else {
@@ -623,7 +623,7 @@ class NutanixPrismComputeUtility {
 		log.debug("restoreSnapshot")
 		def body = [restore_network_configuration: true, snapshot_uuid: snapshotUuid, uuid: vmUuid]
 		def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.v2basePath}/vms/${vmUuid}/restore", authConfig.username, authConfig.password,
-				new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], body: body, ignoreSSL: true), 'POST')
+			new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], contentType: ContentType.APPLICATION_JSON, queryParams: [proxyClusterUuid:clusterUuid], body: body, ignoreSSL: true), 'POST')
 		if(results?.success) {
 			return ServiceResponse.success(results?.data)
 		} else {
@@ -808,7 +808,7 @@ class NutanixPrismComputeUtility {
 				new HttpApiClient.RequestOptions(headers: headers, contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
 		} else {
 			results = client.callJsonApi(authConfig.apiUrl, "api/vmm/" + apiVersion.getCode() + "/content/templates/${templateUuid}/\$actions/deploy", authConfig.username, authConfig.password,
-							new HttpApiClient.RequestOptions(headers: headers, contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
+				new HttpApiClient.RequestOptions(headers: headers, contentType: ContentType.APPLICATION_JSON, body: body, ignoreSSL: true), 'POST')
 		}
 		if(results?.success) {
 			return ServiceResponse.success(results?.data)
@@ -888,7 +888,7 @@ class NutanixPrismComputeUtility {
 		log.debug("listHostMetrics")
 		def groupMemberAttributes = ['hypervisor_memory_usage_ppm', 'hypervisor_cpu_usage_ppm']
 		def appendToBody = [
-				entity_ids: hostUUIDs
+			entity_ids: hostUUIDs
 		]
 		return callGroupApi(client, 'host', 'hypervisor_memory_usage_ppm', groupMemberAttributes, authConfig, appendToBody)
 	}
@@ -897,7 +897,7 @@ class NutanixPrismComputeUtility {
 		log.debug("listVMMetrics")
 		def groupMemberAttributes = ['memory_usage_ppm', 'hypervisor_cpu_usage_ppm', 'controller_user_bytes']
 		def appendToBody = [
-				entity_ids: vmUUIDs
+			entity_ids: vmUUIDs
 		]
 		return callGroupApi(client, 'mh_vm', 'memory_usage_ppm', groupMemberAttributes, authConfig, appendToBody)
 	}
@@ -937,14 +937,14 @@ class NutanixPrismComputeUtility {
 			}
 		} else {
 			vmBody?.spec?.resources?.disk_list?.add([
-					device_properties: [
-						device_type: 'CDROM',
-						disk_address: [
-							"device_index": nextSataIndex,
-							"adapter_type": "SATA"
-						],
+				device_properties: [
+					device_type: 'CDROM',
+					disk_address: [
+						"device_index": nextSataIndex,
+						"adapter_type": "SATA"
 					],
-					data_source_reference: [kind: 'image', uuid: imageUuid]
+				],
+				data_source_reference: [kind: 'image', uuid: imageUuid]
 			])
 		}
 
@@ -983,7 +983,7 @@ class NutanixPrismComputeUtility {
 				def body = [kind: kind, offset: offset, length: maxResults]
 				def now = new Date().time
 				def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/${path}", authConfig.username, authConfig.password,
-						new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], body:body, contentType: ContentType.APPLICATION_JSON, ignoreSSL: true, timeout: authConfig.timeout), 'POST')
+					new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], body:body, contentType: ContentType.APPLICATION_JSON, ignoreSSL: true, timeout: authConfig.timeout), 'POST')
 				log.debug("callListApi results: ${results.toMap()}")
 				if(results?.success && !results?.hasErrors()) {
 					rtn.success = true
@@ -1027,20 +1027,20 @@ class NutanixPrismComputeUtility {
 			def offset = 0
 			def attempt = 0
 			def body = [
-					entity_type                : entityType,
-					group_offset               : 0,
-					group_count                : 1,
-					group_member_count         : maxResults,
-					group_member_offset        : 0,
-					group_member_sort_attribute: sortAttribute,
-					group_member_attributes    : groupMemberAttributes.collect { [attribute: it] }
+				entity_type                : entityType,
+				group_offset               : 0,
+				group_count                : 1,
+				group_member_count         : maxResults,
+				group_member_offset        : 0,
+				group_member_sort_attribute: sortAttribute,
+				group_member_attributes    : groupMemberAttributes.collect { [attribute: it] }
 			] + appendToBody
 
 			while(hasMore && attempt < 100) {
 				body.group_member_offset = offset
 				body.group_member_count = maxResults
 				def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.basePath}/groups", authConfig.username, authConfig.password,
-						new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], body:body, contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'POST')
+					new HttpApiClient.RequestOptions(headers:['Content-Type':'application/json'], body:body, contentType: ContentType.APPLICATION_JSON, ignoreSSL: true), 'POST')
 				log.debug("callGroupApi results: ${results.toMap()}")
 				if(results?.success && !results?.hasErrors()) {
 					rtn.success = true
@@ -1081,12 +1081,12 @@ class NutanixPrismComputeUtility {
 			def attempt = 0
 			while(hasMore && attempt < 100) {
 				def results = client.callJsonApi(authConfig.apiUrl, "${authConfig.v2basePath}/${path}", authConfig.username, authConfig.password,
-						new HttpApiClient.RequestOptions(
-								headers:['Content-Type':'application/json'],
-								queryParams:[count: maxResults.toString(), page: page.toString()],
-								contentType: ContentType.APPLICATION_JSON,
-								ignoreSSL: true
-						), 'GET')
+					new HttpApiClient.RequestOptions(
+						headers:['Content-Type':'application/json'],
+						queryParams:[count: maxResults.toString(), page: page.toString()],
+						contentType: ContentType.APPLICATION_JSON,
+						ignoreSSL: true
+					), 'GET')
 				log.debug("callListApiV2 results: ${results.toMap()}")
 				if(results?.success && !results?.hasErrors()) {
 					rtn.success = true
@@ -1199,7 +1199,7 @@ class NutanixPrismComputeUtility {
 		return rtn
 	}
 
-	static checkServerReady(HttpApiClient client, Map authConfig, String vmId) {
+	static checkServerReady(HttpApiClient client, Map authConfig, String vmId, Boolean skipNetworkWait = false) {
 		def rtn = [success:false]
 		try {
 			def pending = true
@@ -1209,10 +1209,13 @@ class NutanixPrismComputeUtility {
 				def serverDetail = getVm(client, authConfig, vmId)
 				log.debug("serverDetail: ${serverDetail}")
 				def serverResource = serverDetail?.data?.status?.resources
-				if(serverDetail.success == true && serverResource.power_state == 'ON' && serverResource.nic_list?.size() > 0 && serverResource.nic_list.collect { it.ip_endpoint_list }.collect {it.ip}.flatten().find{checkIpv4Ip(it)} ) {
+				def isReady = skipNetworkWait ?
+					(serverDetail.success == true && serverResource?.power_state == 'ON') :
+					(serverDetail.success == true && serverResource.power_state == 'ON' && serverResource.nic_list?.size() > 0 && serverResource.nic_list.collect { it.ip_endpoint_list }.collect {it.ip}.flatten().find{checkIpv4Ip(it)})
+				if(isReady) {
 					rtn.success = true
 					rtn.virtualMachine = serverDetail.data
-					rtn.ipAddress = serverResource.nic_list.collect { it.ip_endpoint_list }.collect {it.ip}.flatten().find{checkIpv4Ip(it)}
+					rtn.ipAddress = serverResource.nic_list?.collect { it.ip_endpoint_list }?.collect {it.ip}?.flatten()?.find{checkIpv4Ip(it)}
 					rtn.diskList = serverResource.disk_list
 					rtn.nicList = serverResource.nic_list ?: []
 					if(serverResource.nic_list_status && serverResource.nic_list_status instanceof List) {
@@ -1275,12 +1278,12 @@ class NutanixPrismComputeUtility {
 		def newNicList = nicList.collect { nic ->
 			def nicMap = [
 				backingInfo: [
-			    	isConnected: nic.is_connected,
+					isConnected: nic.is_connected,
 				],
 				networkInfo: [
-				    subnet: [
-				        extId: nic.subnet_reference.uuid
-				    ],
+					subnet: [
+						extId: nic.subnet_reference.uuid
+					],
 				]
 			]
 			if(nic["ip_endpoint_list"]) {
