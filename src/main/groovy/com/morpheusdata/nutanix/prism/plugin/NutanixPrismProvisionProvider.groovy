@@ -293,40 +293,40 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 	Collection<ServicePlan> getServicePlans() {
 		def servicePlans = []
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-512', name:'1 vCPU, 512MB Memory', description:'1 vCPU, 512MB Memory', sortOrder:0,
-				maxStorage:10l * 1024l * 1024l * 1024l, maxMemory: 1l * 512l * 1024l * 1024l, maxCores:1, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage:10l * 1024l * 1024l * 1024l, maxMemory: 1l * 512l * 1024l * 1024l, maxCores:1,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-1024', name:'1 vCPU, 1GB Memory', description:'1 vCPU, 1GB Memory', sortOrder:1,
-				maxStorage: 10l * 1024l * 1024l * 1024l, maxMemory: 1l * 1024l * 1024l * 1024l, maxCores:1, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 10l * 1024l * 1024l * 1024l, maxMemory: 1l * 1024l * 1024l * 1024l, maxCores:1,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-2048', name:'1 vCPU, 2GB Memory', description:'1 vCPU, 2GB Memory', sortOrder:2,
-				maxStorage: 20l * 1024l * 1024l * 1024l, maxMemory: 2l * 1024l * 1024l * 1024l, maxCores:1, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 20l * 1024l * 1024l * 1024l, maxMemory: 2l * 1024l * 1024l * 1024l, maxCores:1,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-4096', name:'1 vCPU, 4GB Memory', description:'1 vCPU, 4GB Memory', sortOrder:3,
-				maxStorage: 40l * 1024l * 1024l * 1024l, maxMemory: 4l * 1024l * 1024l * 1024l, maxCores:1, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 40l * 1024l * 1024l * 1024l, maxMemory: 4l * 1024l * 1024l * 1024l, maxCores:1,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-8192', name:'2 vCPU, 8GB Memory', description:'2 vCPU, 8GB Memory', sortOrder:4,
-				maxStorage: 80l * 1024l * 1024l * 1024l, maxMemory: 8l * 1024l * 1024l * 1024l, maxCores:2, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 80l * 1024l * 1024l * 1024l, maxMemory: 8l * 1024l * 1024l * 1024l, maxCores:2,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-16384', name:'2 vCPU, 16GB Memory', description:'2 vCPU, 16GB Memory', sortOrder:5,
-				maxStorage: 160l * 1024l * 1024l * 1024l, maxMemory: 16l * 1024l * 1024l * 1024l, maxCores:2,
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 160l * 1024l * 1024l * 1024l, maxMemory: 16l * 1024l * 1024l * 1024l, maxCores:2,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-24576', name:'4 vCPU, 24GB Memory', description:'4 vCPU, 24GB Memory', sortOrder:6,
-				maxStorage: 240l * 1024l * 1024l * 1024l, maxMemory: 24l * 1024l * 1024l * 1024l, maxCores:4, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 240l * 1024l * 1024l * 1024l, maxMemory: 24l * 1024l * 1024l * 1024l, maxCores:4,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-vm-32768', name:'4 vCPU, 32GB Memory', description:'4 vCPU, 32GB Memory', sortOrder:7,
-				maxStorage: 320l * 1024l * 1024l * 1024l, maxMemory: 32l * 1024l * 1024l * 1024l, maxCores:4, 
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
+										 maxStorage: 320l * 1024l * 1024l * 1024l, maxMemory: 32l * 1024l * 1024l * 1024l, maxCores:4,
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true])
 
 		servicePlans << new ServicePlan([code:'nutanix-prism-internal-custom', editable:false, name:'Nutanix Custom', description:'Nutanix Custom', sortOrder:0,
-				customMaxStorage:true, customMaxDataStorage:true, addVolumes:true, customCpu: true, customCores: true, customMaxMemory: true, deletable: false, provisionable: false,
-				maxStorage:0l, maxMemory: 0l,  maxCpu:0, maxCores:1, coresPerSocket: 1])
+										 customMaxStorage:true, customMaxDataStorage:true, addVolumes:true, customCpu: true, customCores: true, customMaxMemory: true, deletable: false, provisionable: false,
+										 maxStorage:0l, maxMemory: 0l,  maxCpu:0, maxCores:1, coresPerSocket: 1])
 		servicePlans
 	}
 
@@ -993,6 +993,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			client.networkProxy = cloud.apiProxy
 			def authConfig = plugin.getAuthConfig(cloud)
 			def vmResource = NutanixPrismComputeUtility.waitForPowerState(client, authConfig, server.externalId)
+			if(isPoweredOn(vmResource)) {
+				log.info("startWorkload - VM ${server.externalId} is already powered on, skipping power on request")
+				return ServiceResponse.success()
+			}
 			def startResults = NutanixPrismComputeUtility.startVm(client, authConfig, server.externalId, vmResource.data)
 			log.debug("startResults: ${startResults}")
 			if(startResults.success == true) {
@@ -1015,6 +1019,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 		}
 	}
 
+	private static boolean isPoweredOn(Map vmResource) {
+		return vmResource?.success == true && vmResource.powerState?.toString()?.equalsIgnoreCase('ON')
+	}
+
 	@Override
 	ServiceResponse startServer(ComputeServer computeServer) {
 		log.debug("startServer: ${computeServer}")
@@ -1026,6 +1034,10 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 				client.networkProxy = cloud.apiProxy
 				def authConfig = plugin.getAuthConfig(cloud)
 				def vmResource = NutanixPrismComputeUtility.waitForPowerState(client, authConfig, computeServer.externalId)
+				if(isPoweredOn(vmResource)) {
+					log.info("startServer - VM ${computeServer.externalId} is already powered on, skipping power on request")
+					return ServiceResponse.success()
+				}
 				def startResults = NutanixPrismComputeUtility.startVm(client, authConfig, computeServer.externalId, vmResource.data)
 				if(startResults.success == true) {
 					def taskId = startResults?.data?.status?.execution_context?.task_uuid
@@ -1163,7 +1175,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			HttpApiClient client = new HttpApiClient()
 			client.networkProxy = cloud.apiProxy
 			def authConfig = plugin.getAuthConfig(cloud)
-			Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid)
+			Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid, server.sourceImage?.skipNetworkWait)
 			if(serverDetails.success && serverDetails.virtualMachine) {
 				rtn.externalId = serverUuid
 				rtn.success = serverDetails.success
@@ -1495,7 +1507,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 		def serverUuid = server.externalId
 		HttpApiClient client = new HttpApiClient()
 		client.networkProxy = cloud.apiProxy
-		Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid)
+		Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid, server.sourceImage?.skipNetworkWait)
 		if(serverDetails.success && serverDetails.virtualMachine) {
 			NutanixPrismSyncUtils.updateServerContainersAndInstances(server, null, morpheusContext)
 			return ServiceResponse.success()
@@ -1913,7 +1925,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 	}
 
 	private buildHostRunConfig(ComputeServer server, HostRequest hostRequest, String imageExternalId, Map opts) {
-		
+
 		Cloud cloud = server.cloud
 		StorageVolume rootVolume = server.volumes?.find{it.rootVolume == true}
 
@@ -2130,7 +2142,6 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			storageType		  : storageType,
 			diskList	      : diskList,
 			nicList			  : nicList,
-			skipNetworkWait   : false,
 			clusterReference  : clusterReference,
 			categories        : categories,
 			projectReference  : projectReference,
@@ -2357,7 +2368,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 							server = saveAndGet(server)
 						} else {
 							//good to go
-							def serverDetail = NutanixPrismComputeUtility.checkServerReady(client, authConfig, server.externalId)
+							def serverDetail = NutanixPrismComputeUtility.checkServerReady(client, authConfig, server.externalId, virtualImage?.skipNetworkWait)
 							log.debug("serverDetail: ${serverDetail}")
 							if (serverDetail.success == true) {
 
@@ -2475,7 +2486,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 	private applyDiskUpdateOnTemplateCreate(ServiceResponse serverDetail, Map runConfig) {
 		// Build a map of desired disks from runConfig, keyed by device_index and device_type
 		def rc_deviceIndex = runConfig.diskList.collectEntries { [ [ device_index : it.device_properties.disk_address.device_index,
-																	device_type : it.device_properties.device_type ]: it] }
+																	 device_type : it.device_properties.device_type ]: it] }
 		// Build a map of current disks from serverDetail, only including those with device_type 'DISK'
 
 		def sd_deviceIndex = serverDetail.data.spec.resources.disk_list
