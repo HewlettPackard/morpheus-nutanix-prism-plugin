@@ -43,22 +43,22 @@ dependencies {
 	provided "org.codehaus.groovy:groovy-all:$groovyVersion"
 	implementation "org.slf4j:slf4j-api:$slf4jVersion"
 	implementation "org.slf4j:slf4j-parent:$slf4jVersion"
-	implementation 'org.apache.httpcomponents:httpclient:4.5.3'
+	implementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	implementation 'org.apache.httpcomponents:httpcore:4.4.5'
 
 	provided("com.bertramlabs.plugins:karman-core:${karmanVersion}") {
 		exclude module: 'groovy-all'
 	}
 
-	implementation 'commons-beanutils:commons-beanutils:1.9.3'
+	implementation 'commons-beanutils:commons-beanutils:1.11.0'
 	implementation "org.slf4j:slf4j-api:$slf4jVersion"
 	implementation "org.slf4j:slf4j-parent:$slf4jVersion"
-	implementation 'commons-net:commons-net:3.6'
+	implementation 'commons-net:commons-net:3.9.0'
 
 	// Include morpheus-core and it's dependencies
 	testImplementation "com.morpheusdata:morpheus-plugin-api:$morphPluginApiVersion"
 	testImplementation 'io.reactivex.rxjava3:rxjava:3.1.8'
-	testImplementation 'org.apache.httpcomponents:httpclient:4.5.3'
+	testImplementation 'org.apache.httpcomponents:httpclient:4.5.14'
 	testImplementation 'org.apache.httpcomponents:httpcore:4.4.5'
 	testImplementation "org.slf4j:slf4j-parent:$slf4jVersion"
 
