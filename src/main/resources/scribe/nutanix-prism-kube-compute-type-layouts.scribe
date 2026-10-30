@@ -1,5 +1,53 @@
 /*
 
+---- Version 36 -----
+
+*/
+
+
+resource "compute-type-layout" "kubernetes-36-ubuntu-24_04-nutanix-prism-amd64-single" {
+  code = "kubernetes-1_36-ubuntu-24_04-nutanix-prism-amd64-single"
+  enabled = true
+  name = "HKS Kubernetes 1.36 Cluster on Ubuntu 24.04"
+  sortOrder = 0
+  computeVersion = "24.04"
+  clusterVersion = "1.36.x"
+  description = "provision a kubernetes 1.36 cluster on ubuntu 24.04"
+  type = "nutanixPrismKubeMaster"
+  serverCount = 4
+  memoryRequirement = 1073741824
+  hasAutoScale = false
+  containerRuntime = "containerd"
+  networkRuntime = "calico"
+  computeServers = [
+    compute-type-set.kubernetes-ubuntu-24_04-nutanix-prism-amd64-set,
+    compute-type-set.kubernetes-ubuntu-24_04-worker-nutanix-prism-amd64-set
+  ]
+  groupType = "kubernetes-cluster"
+  provisionType =  "nutanix-prism-provision-provider"
+  optionTypes = [
+    {code = "nutanix-prism-provision-vpc"},
+    {code = "nutanix-prism-provision-cluster"},
+    {code = "nutanix-prism-provision-categories"},
+    {code = "kubernetes.master.podCidr"},
+    {code = "kubernetes.master.serviceCidr"}
+  ]
+  specTemplates = []
+  packages = [
+    "kubernetes-calico-3-32-1-package",
+  ]
+  optionalPackages = [
+    "kubernetes-envoy-gateway-1-8-controller-package",
+    "kubernetes-rook-1-20-7-with-autoscaler-package",
+    "kubernetes-fluentbit-5-1-package",
+    "kubernetes-prometheus-0-18-package",
+    "kubernetes-gateway-api-1-6-1-package"
+  ]
+}
+
+
+/*
+
 ---- Version 35 -----
 
 */
@@ -9,7 +57,7 @@ resource "compute-type-layout" "kubernetes-35-ubuntu-24_04-nutanix-prism-amd64-s
   code = "kubernetes-1_35-ubuntu-24_04-nutanix-prism-amd64-single"
   enabled = true
   name = "HKS Kubernetes 1.35 Cluster on Ubuntu 24.04"
-  sortOrder = 0
+  sortOrder = 5
   computeVersion = "24.04"
   clusterVersion = "1.35.x"
   description = "provision a kubernetes 1.35 cluster on ubuntu 24.04"
@@ -34,14 +82,14 @@ resource "compute-type-layout" "kubernetes-35-ubuntu-24_04-nutanix-prism-amd64-s
   ]
   specTemplates = []
   packages = [
-    "kubernetes-calico-3-25-0-package",
-    "kubernetes-rook-1-15-0-package",
-    "kubernetes-fluentbit-3-0-7-package",
-    "kubernetes-prometheus-0-12-package",
-    "kubernetes-gateway-api-1-5-1-package"
+    "kubernetes-calico-3-32-1-package",
   ]
   optionalPackages = [
-    "kubernetes-envoy-gateway-1-8-controller-package"
+    "kubernetes-envoy-gateway-1-8-controller-package",
+    "kubernetes-rook-1-20-7-with-autoscaler-package",
+    "kubernetes-fluentbit-5-1-package",
+    "kubernetes-prometheus-0-18-package",
+    "kubernetes-gateway-api-1-6-1-package"
   ]
 }
 
@@ -82,14 +130,14 @@ resource "compute-type-layout" "kubernetes-34-ubuntu-24_04-nutanix-prism-amd64-s
   ]
   specTemplates = []
   packages = [
-    "kubernetes-calico-3-25-0-package",
-    "kubernetes-rook-1-15-0-package",
-    "kubernetes-fluentbit-3-0-7-package",
-    "kubernetes-prometheus-0-12-package",
-    "kubernetes-gateway-api-1-5-1-package"
+    "kubernetes-calico-3-32-1-package",
   ]
   optionalPackages = [
-    "kubernetes-envoy-gateway-1-8-controller-package"
+    "kubernetes-envoy-gateway-1-8-controller-package",
+    "kubernetes-rook-1-20-7-with-autoscaler-package",
+    "kubernetes-fluentbit-5-1-package",
+    "kubernetes-prometheus-0-18-package",
+    "kubernetes-gateway-api-1-6-1-package"
   ]
 }
 
@@ -103,7 +151,7 @@ resource "compute-type-layout" "kubernetes-34-ubuntu-24_04-nutanix-prism-amd64-s
 
 resource "compute-type-layout" "kubernetes-33-ubuntu-24_04-nutanix-prism-amd64-single" {
   code = "kubernetes-1_33-ubuntu-24_04-nutanix-prism-amd64-single"
-  enabled = true
+  enabled = false
   name = "HKS Kubernetes 1.33 Cluster on Ubuntu 24.04"
   sortOrder = 5
   computeVersion = "24.04"
