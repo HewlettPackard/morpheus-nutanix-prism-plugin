@@ -1191,7 +1191,7 @@ class NutanixPrismComputeUtility {
 		return rtn
 	}
 
-	static checkServerReady(HttpApiClient client, Map authConfig, String vmId) {
+	static checkServerReady(HttpApiClient client, Map authConfig, String vmId, Boolean skipNetworkWait = false) {
 		def rtn = [success:false]
 		try {
 			def pending = true
@@ -1201,7 +1201,8 @@ class NutanixPrismComputeUtility {
 				def serverDetail = getVm(client, authConfig, vmId)
 				log.debug("serverDetail: ${serverDetail}")
 				def serverResource = serverDetail?.data?.status?.resources
-				if(serverDetail.success == true && serverResource.power_state == 'ON' && serverResource.nic_list?.size() > 0 && serverResource.nic_list.collect { it.ip_endpoint_list }.collect {it.ip}.flatten().find{checkIpv4Ip(it)} ) {
+				def isReady = skipNetworkWait ? (serverDetail.success == true && serverResource.power_state == 'ON') : (serverDetail.success == true && serverResource.power_state == 'ON' && serverResource.nic_list?.size() > 0 && serverResource.nic_list.collect { it.ip_endpoint_list }.collect {it.ip}.flatten().find{checkIpv4Ip(it)})
+				if(isReady) {
 					rtn.success = true
 					rtn.virtualMachine = serverDetail.data
 					rtn.ipAddress = serverResource.nic_list.collect { it.ip_endpoint_list }.collect {it.ip}.flatten().find{checkIpv4Ip(it)}

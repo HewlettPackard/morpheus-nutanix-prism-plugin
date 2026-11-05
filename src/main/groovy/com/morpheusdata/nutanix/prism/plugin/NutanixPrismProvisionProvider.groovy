@@ -755,6 +755,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			runConfig.userConfig = workloadRequest.usersConfiguration
 			if(imageExternalId) {
 				provisionResponse.createUsers = runConfig.userConfig.createUsers
+				provisionResponse.skipNetworkWait = !virtualImage?.virtioSupported
 				runVirtualMachine(cloud, runConfig, provisionResponse,  workloadRequest, null)
 
 			} else {
@@ -887,6 +888,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			if(imageExternalId) {
 
 				provisionResponse.createUsers = runConfig.userConfig.createUsers
+				provisionResponse.skipNetworkWait = !virtualImage?.virtioSupported
 				runVirtualMachine(cloud, runConfig, provisionResponse, null, hostRequest)
 
 			} else {
@@ -1158,7 +1160,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 			HttpApiClient client = new HttpApiClient()
 			client.networkProxy = cloud.apiProxy
 			def authConfig = plugin.getAuthConfig(cloud)
-			Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid)
+			Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid, !server.sourceImage?.virtioSupported)
 			if(serverDetails.success && serverDetails.virtualMachine) {
 				rtn.externalId = serverUuid
 				rtn.success = serverDetails.success
@@ -1490,7 +1492,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 		def serverUuid = server.externalId
 		HttpApiClient client = new HttpApiClient()
 		client.networkProxy = cloud.apiProxy
-		Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid)
+		Map serverDetails = NutanixPrismComputeUtility.checkServerReady(client, authConfig, serverUuid, !server.sourceImage?.virtioSupported)
 		if(serverDetails.success && serverDetails.virtualMachine) {
 			NutanixPrismSyncUtils.updateServerContainersAndInstances(server, null, morpheusContext)
 			return ServiceResponse.success()
@@ -2352,7 +2354,7 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 							server = saveAndGet(server)
 						} else {
 							//good to go
-							def serverDetail = NutanixPrismComputeUtility.checkServerReady(client, authConfig, server.externalId)
+							def serverDetail = NutanixPrismComputeUtility.checkServerReady(client, authConfig, server.externalId, !virtualImage?.virtioSupported)
 							log.debug("serverDetail: ${serverDetail}")
 							if (serverDetail.success == true) {
 
