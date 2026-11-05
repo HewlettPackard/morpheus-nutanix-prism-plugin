@@ -249,7 +249,7 @@ class VirtualMachinesSync {
 						}
 
 						if(planInfoChanged && currentServer.computeServerType?.guestVm) {
-							NutanixPrismSyncUtils.updateServerContainersAndInstances(currentServer, null, morpheusContext)
+							NutanixPrismSyncUtils.updateServerContainersAndInstances(currentServer, plan, morpheusContext)
 						}
 
 						if(currentServer.powerState != vmConfig.powerState) {
