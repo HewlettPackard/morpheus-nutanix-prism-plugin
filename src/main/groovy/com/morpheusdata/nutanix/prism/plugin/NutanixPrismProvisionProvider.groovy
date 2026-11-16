@@ -103,6 +103,11 @@ class NutanixPrismProvisionProvider extends AbstractProvisionProvider implements
 	}
 
 	@Override
+	Boolean createDefaultInstanceType() {
+		return false
+	}
+
+	@Override
 	Collection<OptionType> getOptionTypes() {
 		def options = []
 		options << new OptionType(
